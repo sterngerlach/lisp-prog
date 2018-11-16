@@ -1,0 +1,89 @@
+
+人工知能プログラミング 演習3 2018年10月5日
+
+問1
+(defun add-up (lst)
+    (if (null lst) 0 (+ (first lst) (add-up (rest lst)))))
+
+(add-up '(2 5 8))
+15
+
+(add-up '(1 2 3))
+6
+
+(add-up ())
+0
+
+(add-up (list -3 -5 -7))
+-15
+
+問2
+(defun laugh (n)
+    (if (zerop n) nil (cons 'HA (laugh (- n 1)))))
+
+(laugh 3)
+(HA HA HA)
+
+(laugh 5)
+(HA HA HA HA HA)
+
+(laugh 0)
+NIL
+
+問3
+(defun count-down (n)
+    (if (zerop n) nil (cons n (count-down (- n 1)))))
+
+(count-down 5)
+(5 4 3 2 1)
+
+(count-down 10)
+(10 9 8 7 6 5 4 3 2 1)
+
+(count-down 0)
+NIL
+
+問4
+(defun square-list (lst)
+    (if (not lst) nil (cons (expt (first lst) 2) (square-list (rest lst)))))
+
+(square-list '(3 6 5 8))
+(9 36 25 64)
+
+(square-list '(1 2 3 4 5))
+(1 4 9 16 25)
+
+問5
+(defun anyoddp (lst)
+    (if (not lst) nil (if (oddp (first lst)) t (anyoddp (rest lst)))))
+
+(anyoddp '(2 4 6 8 9 10))
+T
+
+(anyoddp '(2 4 6 8 10))
+NIL
+
+問6
+(defun extract-numbers (lst)
+    (cond ((not lst) nil)
+          ((numberp (first lst)) (cons (first lst) (extract-numbers (rest lst))))
+          (t (extract-numbers (rest lst)))))
+
+(extract-numbers '(3 apples and 1 banana))
+(3 1)
+
+(extract-numbers '(12 hoge 34 fuga egg 56 spam 78 ham))
+(12 34 56 78)
+
+問7
+(defun count-odd (lst)
+    (cond ((not lst) 0)
+          ((oddp (first lst)) (+ 1 (count-odd (rest lst))))
+          (t (count-odd (rest lst)))))
+
+(count-odd '(4 5 6 7 8))
+2
+
+(count-odd '(2 3 5 7 8 10 13))
+4
+

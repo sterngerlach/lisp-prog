@@ -1,0 +1,107 @@
+
+人工知能プログラミング 演習2 2018年10月5日
+
+問1
+(defun make-even (x)
+    (if (oddp x) x (+ x 1)))
+
+(make-even 3)
+3
+
+(make-even 4)
+5
+
+問2
+(defun longer (x y)
+    (> (length x) (length y)))
+
+(longer '(1 2) '(3 4 5))
+NIL
+
+(longer '(1 2 3) '(4 5))
+T
+
+問3
+(defun ordered (x y)
+    (if (< x y) (list x y) (list y x)))
+
+(ordered 3 5)
+
+(3 5)
+
+(ordered 5 3)
+
+(3 5)
+
+問4
+(defun constrain (x min max)
+    (if (< x min) min (if (> x max) max x)))
+
+(constrain 3 -30 30)
+3
+
+(constrain 55 -30 30)
+30
+
+(constrain -45 -30 30)
+-30
+
+問5
+(defun func (x)
+    (cond ((and (oddp x) (> x 0)) (* x x))
+          ((and (oddp x) (< x 0)) (* 2 x))
+          (t (/ x 2))))
+
+(defun func (x)
+    (if (oddp x) (if (> x 0) (* x x) (* 2 x)) (/ x 2)))
+
+(func 5)
+25
+
+(func -11)
+-22
+
+(func 18)
+9
+
+(func -12)
+-6
+
+問6
+(defun same-sign (x y)
+    (or (and (zerop x) (zerop y)) (and (> x 0) (> y 0)) (and (< x 0) (< y 0))))
+
+(same-sign 0 0)
+T
+
+(same-sign 5 12)
+T
+
+(same-sign -12 -5)
+T
+
+(same-sign -12 5)
+NIL
+
+(same-sign 5 -12)
+NIL
+
+問7
+1) (and 'a 'b 'c)
+C
+
+2) (or 'a 'b 'c)
+A
+
+3) (or nil 'nagashima t)
+NAGASHIMA
+
+4) (and 'a 'b nil)
+NIL
+
+5) (and (equal 'abc 'abc) 'yes)
+YES
+
+6) (or (equal 'abc 'abc) 'yes)
+T
+

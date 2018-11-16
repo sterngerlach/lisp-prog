@@ -1,0 +1,187 @@
+
+人工知能プログラミング 演習1 2018年10月5日
+
+問1
+1) (cons 5 (list 6 7))
+
+(5 6 7)
+
+2) (cons 5 '(list 6 7))
+
+(5 LIST 6 7)
+
+3) (list 3 'from 9 'gives (- 9 3))
+
+(3 FROM 9 GIVES 6)
+
+4) (+ (length '(1 a 2 b)) (third '(1 a 2 b)))
+
+6
+
+5) (rest '(cons is short for construct))
+
+(IS SHORT FOR CONSTRUCT)
+
+問2
+1) (third (the quick brown fox))
+
+Error: PROGRAM-ERROR "Too many arguments."
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by THE.
+PROGRAM-ERROR "Too many arguments."
+
+Broken at THE.  Type :H for Help.
+    1  Return to top level.
+
+(third '(the quick brown fox))
+
+BROWN
+
+2) (list 2 and 2 is 4)
+
+Error: UNBOUND-VARIABLE :NAME AND
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by EVAL.
+UNBOUND-VARIABLE :NAME AND
+
+Broken at LIST.  Type :H for Help.
+    1  Return to top level.
+
+(list 2 'and 2 'is 4)
+
+(2 AND 2 IS 4)
+
+3) (+ 1 '(length (list t t t t)))
+
+Error: TYPE-ERROR :DATUM (LENGTH (LIST T T ...)) :EXPECTED-TYPE NUMBER
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by +.
+TYPE-ERROR :DATUM (LENGTH (LIST T T ...)) :EXPECTED-TYPE NUMBER
+
+Broken at +.  Type :H for Help.
+    1  Return to top level.
+
+(+ 1 (length (list t t t t)))
+
+5
+
+4) (cons 'patrick (seymour marvin))
+
+Error: UNDEFINED-FUNCTION :NAME SEYMOUR
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by EVAL.
+UNDEFINED-FUNCTION :NAME SEYMOUR
+
+Broken at CONS.  Type :H for Help.
+    1  Return to top level.
+
+(cons 'patrick '(seymour marvin))
+
+(PATRICK SEYMOUR MARVIN)
+
+5) (cons 'patrick (list seymour marvin))
+
+Error: UNBOUND-VARIABLE :NAME SEYMOUR
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by EVAL.
+UNBOUND-VARIABLE :NAME SEYMOUR
+
+Broken at LIST.  Type :H for Help.
+    1  Return to top level.
+
+(cons 'patrick (list 'seymour 'marvin))
+
+(PATRICK SEYMOUR MARVIN)
+
+問3
+1) (cons 'grapes '(of wrath))
+
+(GRAPES OF WRATH)
+
+2) (list t 'is 'not nil)
+
+(T IS NOT NIL)
+
+TはTrue(真値)を表している
+
+3) (first '(list moose goose))
+
+LIST
+
+4) (first (list 'moose 'goose))
+
+MOOSE
+
+5) (cons 'home ('sweet 'home))
+
+Error: TYPE-ERROR :DATUM (QUOTE SWEET) :EXPECTED-TYPE FUNCTION
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by EVAL.
+TYPE-ERROR :DATUM (QUOTE SWEET) :EXPECTED-TYPE FUNCTION
+
+Broken at CONS.  Type :H for Help.
+    1  Return to top level.
+
+問4
+(defun kilometer-per-litter (previous current amount) (/ (- current previous) amount))
+
+KILOMETER-PER-LITTER
+
+(kilometer-per-litter 0 100 10)
+
+10
+
+問5
+(defun addlength (lst) (cons (length lst) lst))
+
+ADDLENGTH
+
+(addlength '(a b c d))
+
+(4 A B C D)
+
+問6
+(defun scrabble (word) (list word 'is 'a 'word))
+
+SCRABBLE
+
+(scrabble 'tea)
+
+(TEA IS A WORD)
+
+(scrabble 'word)
+
+(WORD IS A WORD)
+
+問7
+(defun stooge (larry moe curly) (list larry (list 'moe curly) curly 'larry))
+
+(stooge 'moe 'curly 'larry)
+
+(MOE (MOE LARRY) LARRY LARRY)
+
+問8
+(defun mystery (x) (list (second x) (first x)))
+
+1) (mystery '(dancing bear))
+
+(BEAR DANCING)
+
+2) (mystery 'dancing 'bear)
+
+Error: PROGRAM-ERROR "MYSTERY [or a callee] requires less than two arguments."
+Fast links are on: do (si::use-fast-links nil) for debugging
+Signalled by MYSTERY.
+PROGRAM-ERROR "MYSTERY [or a callee] requires less than two arguments."
+
+Broken at MYSTERY.  Type :H for Help.
+    1  Return to top level.
+
+3) (mystery '(zowie))
+
+(NIL ZOWIE)
+
+4) (mystery (list 'first 'second))
+
+(SECOND FIRST)
+
