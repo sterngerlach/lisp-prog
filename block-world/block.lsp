@@ -19,6 +19,10 @@
     (mapcar #'first
         (fetch (list '? 'supports b))))
 
+(defun supporters1 (b)
+    (mapcar #'third
+        (fetch (list '? 'supported-by b))))
+
 (defun description (b)
     (remove-if #'(lambda (x) (eq x b))
         (reduce #'append
