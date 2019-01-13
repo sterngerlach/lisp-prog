@@ -6,6 +6,10 @@
         lst
         (append (rev (rest lst)) (list (first lst)))))
 
+(defun rev (lst)
+    (if (zerop (length l)) nil
+        (append (rev (rest l)) (list (first l)))))
+
 (defun rm (elem lst)
     (cond ((null lst) nil)
           ((equal elem (first lst)) (rm elem (rest lst)))
@@ -36,7 +40,8 @@
 
 (defun sa (lst0 lst1)
     (cond ((null lst0) nil)
-          ((mem (first lst0) lst1) (sa (rest lst0) (rm (first lst0) lst1)))
+          ((mem (first lst0) lst1)
+              (sa (rest lst0) lst1))
           (t (append (list (first lst0)) (sa (rest lst0) lst1)))))
 
 (defun lookup (key dict)

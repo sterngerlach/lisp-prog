@@ -69,7 +69,13 @@ T
 
 問6
 (defun same-sign (x y)
-    (or (and (zerop x) (zerop y)) (and (> x 0) (> y 0)) (and (< x 0) (< y 0))))
+    (or (and (zerop x) (zerop y))
+        (and (> x 0) (> y 0))
+        (and (< x 0) (< y 0))))
+
+(defun same-sign (x y)
+    (or (and (zerop x) (zerop y))
+        (> (* x y) 0)))
 
 (same-sign 0 0)
 T

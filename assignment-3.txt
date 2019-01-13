@@ -5,6 +5,9 @@
 (defun add-up (lst)
     (if (null lst) 0 (+ (first lst) (add-up (rest lst)))))
 
+(defun add-up (lst)
+    (if (zerop (length l)) 0 (+ (first lst) (add-up (rest lst)))))
+
 (add-up '(2 5 8))
 15
 
