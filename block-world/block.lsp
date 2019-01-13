@@ -35,3 +35,13 @@
                 (mapcar #'(lambda (x) (fetch (list x 'shape '?)))
                     (supporters b))))))
 
+(defun fetch-supporters-shape (b)
+    (reduce #'append
+        (mapcar #'(lambda (x) (fetch (list x 'shape '?)))
+            (supporters b))))
+
+(defun supp-cube1 (b)
+    (find-if #'(lambda (x) (eq x 'cube))
+        (mapcar #'(lambda (x) (third x))
+            (fetch-supporters-shape b))))
+
